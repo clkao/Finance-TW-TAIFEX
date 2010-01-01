@@ -17,7 +17,6 @@ inc/Sub/Uplevel.pm
 inc/Test/Exception.pm
 lib/Finance/TW/TAIFEX.pm
 lib/Finance/TW/TAIFEX/Contract.pm
-lib/Finance/TW/TAIFEX/Contract/Index.pm
 lib/Finance/TW/TAIFEX/Product.pm
 lib/Finance/TW/TAIFEX/Settlement/SecondWednesday.pm
 lib/Finance/TW/TAIFEX/Settlement/ThirdWednesday.pm

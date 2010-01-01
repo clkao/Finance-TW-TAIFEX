@@ -1,5 +1,5 @@
 use inc::Module::Install;
-
+sub readme_from {}
 readme_from 'lib/Finance/TW/TAIFEX.pm';
 name 'Finance-TW-TAIFEX';
 all_from 'lib/Finance/TW/TAIFEX.pm';
