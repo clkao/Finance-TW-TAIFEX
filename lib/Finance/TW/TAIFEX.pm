@@ -11,7 +11,7 @@ use Finance::TW::TAIFEX::Product;
 use Finance::TW::TAIFEX::Contract;
 
 use 5.008_001;
-our $VERSION = '0.28';
+our $VERSION = '0.29';
 
 has context_date => ( is => "rw", isa => "DateTime",
                       default => sub { DateTime->now },

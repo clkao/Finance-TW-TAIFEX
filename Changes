@@ -1,4 +1,6 @@
 Revision history for Perl extension Finance::TW::TAIFEX
+0.29  Sat Jan 30 12:03:52 CST 2010
+        - Correct calendar for Feb 2010.
 
 0.28  Fri Jan  1 17:47:05 2010
         - original version
