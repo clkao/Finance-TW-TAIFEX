@@ -285,7 +285,7 @@ sub interday_options_request {
 }
 
 
-=head2 daily_futures_uri DATE
+=head2 daily_options_uri DATE
 
 Returns the URI of the official TAIFEX options trading records for DATE.
 
