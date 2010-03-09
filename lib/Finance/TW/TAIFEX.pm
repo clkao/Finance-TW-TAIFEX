@@ -43,21 +43,17 @@ sub _build_products {
                TXO TEO TFO MSO XIO GTO)),
     };
 
-=begin comment
-
-        (map { $_ => Finance::TW::TAIFEX::Product->new_with_traits(
-            traits => ['Settlement::ThirdToLastDayOfMonth'],
-            exchange => $self,
-            name => $_,
-        ) } qw(TGF TGO)),
-
-        (GBF => Finance::TW::TAIFEX::Product->new_with_traits(
-            traits => ['Settlement::SecondWednesday'],
-            exchange => $self,
-            name => 'GBF',
-        )),
-
-=cut
+#        (map { $_ => Finance::TW::TAIFEX::Product->new_with_traits(
+#            traits => ['Settlement::ThirdToLastDayOfMonth'],
+#            exchange => $self,
+#            name => $_,
+#        ) } qw(TGF TGO)),
+#
+#        (GBF => Finance::TW::TAIFEX::Product->new_with_traits(
+#            traits => ['Settlement::SecondWednesday'],
+#            exchange => $self,
+#            name => 'GBF',
+#        )),
 
 }
 
