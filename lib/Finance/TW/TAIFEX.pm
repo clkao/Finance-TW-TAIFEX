@@ -6,6 +6,7 @@ use File::ShareDir qw(dist_dir);
 use List::MoreUtils qw(firstidx);
 use MooseX::AttributeHelpers;
 use MooseX::Types::DateTime;
+use HTTP::Request::Common qw(POST);
 
 use Finance::TW::TAIFEX::Product;
 use Finance::TW::TAIFEX::Contract;
@@ -231,6 +232,58 @@ sub daily_futures_uri {
     $date ||= $self->context_date;
     return "http://www.taifex.com.tw/DailyDownload/Daily_@{[ $date->ymd('_') ]}.zip";
 }
+
+=head2 interday_futures_request($product, [$DATE])
+
+Returns a HTTP::Request object that fetches futures monthly interday
+csv file for $product of $DATE.
+
+=cut
+
+sub interday_futures_request {
+    my ($self, $product, $date) = @_;
+    $date ||= $self->context_date;
+    my $from = $date->clone->truncate( to => 'month' );
+    my $to = $from->clone->add( months => 1 )->subtract( days => 1 );
+    return POST 'http://www.taifex.com.tw/chinese/3/3_1_2dl.asp',
+      [ goday          => '',
+        DATA_DATE      => $from->ymd('/'),
+        DATA_DATE1     => $to->ymd('/'),
+        DATA_DATE_Y    => $from->year,
+        DATA_DATE_M    => $from->month,
+        DATA_DATE_D    => $from->day,
+        DATA_DATE_Y1   => $to->year,
+        DATA_DATE_M1   => $to->month,
+        DATA_DATE_D1   => $to->day,
+        commodity_id2t => '',
+        COMMODITY_ID   => $product ];
+}
+
+=head2 interday_options_request($product, [$DATE])
+
+Returns a HTTP::Request object that fetches options monthly interday
+csv file for $product of $DATE.
+
+=cut
+
+sub interday_options_request {
+    my ($self, $product, $date) = @_;
+    $date ||= $self->context_date;
+    my $from = $date->clone->truncate( to => 'month' );
+    my $to = $from->clone->add( months => 1 )->subtract( days => 1 );
+    return POST 'http://www.taifex.com.tw/chinese/3/3_2_3_b.asp',
+      [ goday          => '',
+        DATA_DATE      => $from->ymd('/'),
+        DATA_DATE1     => $to->ymd('/'),
+        DATA_DATE_Y    => $from->year,
+        DATA_DATE_M    => $from->month,
+        DATA_DATE_D    => $from->day,
+        DATA_DATE_Y1   => $to->year,
+        DATA_DATE_M1   => $to->month,
+        DATA_DATE_D1   => $to->day,
+        COMMODITY_ID   => $product.'%' ];
+}
+
 
 =head2 daily_futures_uri DATE
 
