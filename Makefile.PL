@@ -12,7 +12,6 @@ requires 'File::ShareDir';
 requires 'List::MoreUtils';
 requires 'Moose';
 requires 'MooseX::Traits';
-requires 'MooseX::AttributeHelpers';
 requires 'MooseX::Types::DateTime';
 
 install_share 'share';

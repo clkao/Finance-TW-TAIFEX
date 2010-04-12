@@ -4,7 +4,6 @@ use DateTime;
 use Try::Tiny;
 use File::ShareDir qw(dist_dir);
 use List::MoreUtils qw(firstidx);
-use MooseX::AttributeHelpers;
 use MooseX::Types::DateTime;
 use HTTP::Request::Common qw(POST);
 
@@ -21,12 +20,12 @@ has context_date => ( is => "rw", isa => "DateTime",
 has calendar => (is => "ro", isa => "HashRef", default => sub { {} });
 
 has products => (
-    metaclass => 'Collection::Hash',
+    traits => ['Hash'],
     is => "ro",
     isa => "HashRef[Finance::TW::TAIFEX::Product]",
-    provides  => {
-        exists    => 'has_product',
-        get       => 'product',
+    handles  => {
+        has_product => 'exists',
+        product     => 'get',
     },
     lazy_build => 1,
 );
