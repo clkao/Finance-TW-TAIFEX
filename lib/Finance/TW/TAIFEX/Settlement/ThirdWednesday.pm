@@ -13,3 +13,9 @@ sub default_settlement_day {
 }
 
 1;
+
+=head1 NAME
+
+Finance::TW::TAIFEX::Settlement::ThirdWednesday - settlement role
+
+=cut

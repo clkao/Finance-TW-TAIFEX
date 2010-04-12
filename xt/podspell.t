@@ -5,5 +5,22 @@ add_stopwords(<DATA>);
 set_spell_cmd("aspell -l en list");
 all_pod_files_spelling_ok('lib');
 __DATA__
-Tatsuhiko
-Miyagawa
+CPF
+Chia
+GTF
+GTO
+Kao
+MSF
+MSO
+MTX
+TAIFEX
+TEO
+TF
+TFO
+TXO
+XIF
+XIO
+csv
+interday
+liang
+YYYYMM
