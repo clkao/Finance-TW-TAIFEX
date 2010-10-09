@@ -1,4 +1,9 @@
 Revision history for Perl extension Finance::TW::TAIFEX
+
+0.30 Sat Oct  9 17:03:03 CST 2010
+        - Use moose native attribute traits.
+        - Calendar updates.
+
 0.29  Sat Jan 30 12:03:52 CST 2010
         - Correct calendar for Feb 2010.
 
