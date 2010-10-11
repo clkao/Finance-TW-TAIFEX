@@ -13,6 +13,7 @@ requires 'List::MoreUtils';
 requires 'Moose';
 requires 'MooseX::Traits';
 requires 'MooseX::Types::DateTime';
+requires 'HTTP::Request::Common';
 
 install_share 'share';
 
