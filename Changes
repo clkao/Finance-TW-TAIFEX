@@ -1,5 +1,9 @@
 Revision history for Perl extension Finance::TW::TAIFEX
 
+0.31 Mon Oct 11 09:28:46 CST 2010
+        - Use exchange timezone by default.
+        - Fix dependencies.
+
 0.30 Sat Oct  9 17:03:03 CST 2010
         - Use moose native attribute traits.
         - Calendar updates.
