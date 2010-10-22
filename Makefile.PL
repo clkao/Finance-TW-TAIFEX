@@ -1,3 +1,4 @@
+sub readme_from {}; sub auto_include_deps {}; sub author_tests {}; sub auto_set_repository {};
 use inc::Module::Install;
 sub readme_from {}
 readme_from 'lib/Finance/TW/TAIFEX.pm';
