@@ -1,5 +1,10 @@
 Revision history for Perl extension Finance::TW::TAIFEX
 
+0.32 Sat Dec 25 20:10:39 CST 2010
+        - Use Any::Moose.
+        - Calendar for 2011.
+        - Calendar for 2000-2008.
+
 0.31 Mon Oct 11 09:28:46 CST 2010
         - Use exchange timezone by default.
         - Fix dependencies.
