@@ -1,10 +1,11 @@
 package Finance::TW::TAIFEX;
-use Moose;
+use Any::Moose;
 use DateTime;
 use Try::Tiny;
 use File::ShareDir qw(dist_dir);
 use List::MoreUtils qw(firstidx);
-use MooseX::Types::DateTime;
+use Any::Moose 'X::Types::DateTime';
+require MouseX::NativeTraits if Any::Moose->mouse_is_preferred;
 use HTTP::Request::Common qw(POST);
 
 use Finance::TW::TAIFEX::Product;
@@ -312,6 +313,6 @@ L<http://www.taifex.com.tw/>
 =cut
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
+no Any::Moose;
 1;
 

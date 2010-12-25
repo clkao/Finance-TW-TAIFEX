@@ -1,5 +1,5 @@
 package Finance::TW::TAIFEX::Contract;
-use Moose;
+use Any::Moose;
 
 =head1 NAME
 
@@ -54,6 +54,6 @@ sub encode {
 }
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
+no Any::Moose;
 1;
 

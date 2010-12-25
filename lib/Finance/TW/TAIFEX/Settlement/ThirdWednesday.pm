@@ -1,5 +1,5 @@
 package Finance::TW::TAIFEX::Settlement::ThirdWednesday;
-use Moose::Role;
+use Any::Moose 'Role';
 
 sub default_settlement_day {
     my ($self, $date) = @_;

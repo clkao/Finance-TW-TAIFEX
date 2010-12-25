@@ -1,5 +1,5 @@
 package Finance::TW::TAIFEX::Product;
-use Moose;
+use Any::Moose;
 
 =head1 NAME
 
@@ -9,7 +9,7 @@ Finance::TW::TAIFEX::Contract - Product on TAIFEX
 
 =cut
 
-with 'MooseX::Traits';
+with any_moose('X::Traits');
 
 has name => (is => "ro", isa => "Str");
 
@@ -70,5 +70,5 @@ sub find_settlement_day {
 }
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
+no Any::Moose;
 1;
