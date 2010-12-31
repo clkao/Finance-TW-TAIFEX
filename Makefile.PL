@@ -11,10 +11,19 @@ requires 'DateTime';
 requires 'File::ShareDir';
 requires 'List::MoreUtils';
 requires 'HTTP::Request::Common';
-requires 'MouseX::NativeTraits'; # XXX: there's nativetraits are builtin for moose
 
-requires_any_moose 'X::Traits';
-requires_any_moose 'X::Types::DateTime';
+eval 'require Moose; 1';
+if ($@ || -d 'inc/.author') {
+    requires 'MouseX::NativeTraits'; # XXX: there's nativetraits are builtin for moose
+
+    requires_any_moose 'X::Traits';
+    requires_any_moose 'X::Types::DateTime';
+}
+else {
+    requires 'Any::Moose';
+    requires 'MooseX::Traits';
+    requires 'MooseX::Types::DateTime';
+}
 
 install_share 'share';
 
