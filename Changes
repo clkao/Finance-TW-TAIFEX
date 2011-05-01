@@ -1,5 +1,8 @@
 Revision history for Perl extension Finance::TW::TAIFEX
 
+0.34 Sun May  1 17:33:59 CST 2011
+        - correct 2011 calendar.
+
 0.33 Sun Feb  6 21:25:37 CST 2011
         - Better any-moose deps handling.
         - correct 2011 lunar new year calendar.
