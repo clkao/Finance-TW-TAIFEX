@@ -175,7 +175,6 @@ sub is_trading_day {
 =head2 next_trading_day [DATE]
 
 Returns the next known trading day in string after the given DATE.
-This doesn't work across years yet.
 
 =cut
 
@@ -186,14 +185,17 @@ sub next_trading_day {
     my $cal = $self->calendar_for($date->year);
     my $d = $date->ymd;
     my $nth = firstidx { $_ gt $d } @{$cal};
-    return if $nth == $#{$cal};
+
+    if ($nth < 0) {
+        return $self->calendar_for($date->year + 1)->[0];
+    }
+
     return $cal->[$nth];
 }
 
 =head2 previous_trading_day [DATE]
 
 Returns the previous known trading day in string after the given DATE.
-This doesn't work across years yet.
 
 =cut
 
@@ -207,7 +209,9 @@ sub previous_trading_day {
     die "$date not a known trading day"
         if $nth < 0;
 
-    return unless $nth + $offset >= 0;
+    if ($nth + $offset < 0) {
+        return $self->calendar_for($date->year - 1)->[-1];
+    }
 
     return $cal->[$nth + $offset];
 }
