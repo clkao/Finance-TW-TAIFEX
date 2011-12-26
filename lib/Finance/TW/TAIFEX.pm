@@ -161,9 +161,9 @@ sub calendar_for {
     return $self->calendar->{$year}
         if $self->calendar->{$year};
 
-    my $root = try { dist_dir('Finance-TW-TAIFEX') } || 'share' ;
-
-    $self->calendar->{$year} = $self->_read_cal("$root/calendar/$year.txt");
+    my $dist_dir = File::Spec->rel2abs("../../../share", File::Basename::dirname($INC{"Finance/TW/TAIFEX.pm"}));
+    $dist_dir = try { dist_dir('Finance-TW-TAIFEX') || 'share' } unless -e $dist_dir;
+    $self->calendar->{$year} = $self->_read_cal("$dist_dir/calendar/$year.txt");
 }
 
 =head2 is_trading_day [DATE]
