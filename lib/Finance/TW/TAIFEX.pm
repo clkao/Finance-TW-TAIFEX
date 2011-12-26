@@ -1,6 +1,7 @@
 package Finance::TW::TAIFEX;
 use Any::Moose;
 use DateTime;
+use DateTime::Format::Strptime;
 use Try::Tiny;
 use File::ShareDir qw(dist_dir);
 use List::MoreUtils qw(firstidx);
@@ -108,9 +109,13 @@ Checks if the given product exists.
 
 =cut
 
+my $Strp = DateTime::Format::Strptime->new( pattern => '%F', time_zone => 'Asia/Taipei');
+
 sub BUILDARGS {
     my $class = shift;
-    return $#_ == 0  ? { context_date => $_[0] } : { @_ };
+    return { @_ } unless $#_ == 0;
+    return { } unless $_[0];
+    return { context_date => ref $_[0] ? $_[0] : $Strp->parse_datetime($_[0]) }
 }
 
 =head2 contract NAME YEAR MONTH
