@@ -8,9 +8,12 @@ build_requires 'Test::More';
 build_requires 'Test::Exception';
 
 requires 'DateTime';
+requires 'DateTime::Format::Strptime';
+requires 'Archive::Zip';
 requires 'File::ShareDir';
 requires 'List::MoreUtils';
 requires 'HTTP::Request::Common';
+requires 'LWP::Simple';
 
 eval 'require Moose; 1';
 if ($@ || -d 'inc/.author') {
