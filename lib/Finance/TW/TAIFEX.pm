@@ -8,6 +8,8 @@ use List::MoreUtils qw(firstidx);
 use Any::Moose 'X::Types::DateTime';
 require MouseX::NativeTraits if Any::Moose->mouse_is_preferred;
 use HTTP::Request::Common qw(POST);
+use LWP::Simple 'getstore';
+use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 
 use Finance::TW::TAIFEX::Product;
 use Finance::TW::TAIFEX::Contract;
@@ -300,6 +302,37 @@ sub daily_options_uri {
     my ($self, $date) = @_;
     $date ||= $self->context_date;
     return "http://www.taifex.com.tw/OptionsDailyDownload/OptionsDaily_@{[ $date->ymd('_') ]}.zip";
+}
+
+=head2 ensure_rpt DIR, TYPE, PREFIX
+
+=cut
+
+sub ensure_rpt {
+    my ($self, $rpt_dir, $type, $prefix) = @_;
+    my $date = $self->context_date;
+    my $rpt_f = "$rpt_dir/".$date->ymd('-').".rpt";
+
+    unless (-s $rpt_f) {
+        my $rpt = $prefix.$date->ymd('_' )."rpt";
+        my $f = $self->can('daily_'.$type.'_uri') or die "unknown type: $type";
+        my $url = $self->$f();
+        my $tmp = "/tmp/taifex-$type-".$date->ymd('-')."zip";
+        unless (-s $tmp) {
+            my $rc = getstore($url => $tmp);
+
+            die("failed to fetch $url: $rc")
+                if HTTP::Status::is_error($rc);
+        }
+        my $zip = Archive::Zip->new();
+        unless ( $zip->read( $tmp ) == AZ_OK ) {
+            unlink( $tmp );
+            die("Unable to read zip file $tmp");
+        }
+        unless ( $zip->extractMember($rpt, $rpt_f) == AZ_OK ) {
+            die("Unable to extract $rpt from $tmp");
+        }
+    }
 }
 
 =head1 CAVEATS
