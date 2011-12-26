@@ -1,4 +1,5 @@
 package Finance::TW::TAIFEX;
+use strict;
 use Any::Moose;
 use DateTime;
 use DateTime::Format::Strptime;

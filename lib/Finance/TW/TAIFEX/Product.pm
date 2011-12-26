@@ -1,4 +1,5 @@
 package Finance::TW::TAIFEX::Product;
+use strict;
 use Any::Moose;
 
 =head1 NAME

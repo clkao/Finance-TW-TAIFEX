@@ -1,4 +1,5 @@
 package Finance::TW::TAIFEX::Settlement::ThirdWednesday;
+use strict;
 use Any::Moose 'Role';
 
 sub default_settlement_day {
