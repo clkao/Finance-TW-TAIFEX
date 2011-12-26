@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
 use Test::Exception;
-use Test::More tests => 14;
+use Test::More tests => 4;
 use ok 'Finance::TW::TAIFEX';
 use ok 'Finance::TW::TAIFEX::Contract';
 
