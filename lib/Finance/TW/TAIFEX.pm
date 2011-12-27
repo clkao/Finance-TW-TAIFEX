@@ -315,10 +315,10 @@ sub ensure_rpt {
     my $rpt_f = "$rpt_dir/".$date->ymd('-').".rpt";
 
     unless (-s $rpt_f) {
-        my $rpt = $prefix.$date->ymd('_' )."rpt";
+        my $rpt = $prefix.$date->ymd('_' ).".rpt";
         my $f = $self->can('daily_'.$type.'_uri') or die "unknown type: $type";
         my $url = $self->$f();
-        my $tmp = "/tmp/taifex-$type-".$date->ymd('-')."zip";
+        my $tmp = "/tmp/taifex-$type-".$date->ymd('-').".zip";
         unless (-s $tmp) {
             my $rc = getstore($url => $tmp);
 
