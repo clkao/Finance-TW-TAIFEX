@@ -1,4 +1,7 @@
 .gitignore
+bin/tx-fitf-store
+bin/tx-get-futures-daily
+bin/tx-get-options-daily
 Changes
 default_cal.pl
 inc/Module/Install.pm
@@ -38,9 +41,11 @@ share/calendar/2008.txt
 share/calendar/2009.txt
 share/calendar/2010.txt
 share/calendar/2011.txt
+share/calendar/2012.txt
 t/00_compile.t
 t/01-basic.t
 t/02-tx.t
+t/03-year.t
 xt/perlcritic.t
 xt/pod.t
 xt/podspell.t

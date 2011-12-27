@@ -47,12 +47,10 @@ METHODS
     date in the current context.
 
   next_trading_day [DATE]
-    Returns the next known trading day in string after the given DATE. This
-    doesn't work across years yet.
+    Returns the next known trading day in string after the given DATE.
 
   previous_trading_day [DATE]
     Returns the previous known trading day in string after the given DATE.
-    This doesn't work across years yet.
 
   daily_futures_uri DATE
     Returns the URI of the official TAIFEX futures trading records for DATE.
@@ -68,6 +66,7 @@ METHODS
   daily_options_uri DATE
     Returns the URI of the official TAIFEX options trading records for DATE.
 
+  ensure_rpt DIR, TYPE, PREFIX
 CAVEATS
     The URI returned by "daily_futures_uri" and "daily_options_uri" are only
     valid for the last 30 trading days per the policy of TAIFEX.
