@@ -29,6 +29,7 @@ else {
 }
 
 install_share 'share';
+install_script glob('bin/*');
 
 auto_include_deps;
 author_tests('xt');
