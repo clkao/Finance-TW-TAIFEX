@@ -36,7 +36,14 @@ my $fitf_file = DateTime::Format::Strptime->new( pattern => $fitf_db, time_zone 
 open my $fitf_fh, '>', "$fitf_file"
     or $logger->error_die("unable to open $fitf_file for writing: $!");
 
-open my $rpt_fh, '<' , $rpt_f
+my $layer = '';
+if (-e "$rpt_f.bz2") {
+    $rpt_f .= '.bz2';
+    require PerlIO::via::Bzip2;
+    $layer .= ':via(Bzip2)';
+}
+
+open my $rpt_fh, '<'.$layer , $rpt_f
     or $logger->error_die("unable to open $rpt_f for read: $!");
 $date =~ s/-//g;
 my $writer = Finance::FITF->new_writer(
