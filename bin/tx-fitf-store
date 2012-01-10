@@ -8,10 +8,17 @@ use Finance::TW::TAIFEX;
 BEGIN {
 eval 'require Finance::FITF; Finance::FITF->import; 1'
     or die 'Finance::FITF required';
+eval 'require Log::Log4perl; 1'
+    or die 'Log::Log4perl required';
 }
-use Log::Log4perl;
-Log::Log4perl::init_and_watch('gt-log.conf', 60) if -e 'gt-log.conf';
-my $logger = Log::Log4perl->get_logger('gt.datamaint');
+if (-e 'log.conf') {
+    Log::Log4perl::init('log.conf');
+}
+else {
+    Log::Log4perl->easy_init();
+
+}
+my $logger = Log::Log4perl->get_logger('taifex');
 
 my $rpt_dir = shift or die 'rpt dir required';
 my $fitf_db = shift or die 'fitf dir required';
