@@ -27,7 +27,6 @@ $taifex->is_trading_day
 
 my $date_dt = $taifex->context_date;
 my $date = $date_dt->ymd('-');
-warn $contract;
 my $month = $taifex->product($contract)->near_term($date_dt);
 
 my $rpt_f = "$rpt_dir/$date.rpt";
