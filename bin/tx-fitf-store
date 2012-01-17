@@ -15,7 +15,8 @@ if (-e 'log.conf') {
     Log::Log4perl::init('log.conf');
 }
 else {
-    Log::Log4perl->easy_init();
+    use Log::Log4perl::Level;
+    Log::Log4perl->easy_init($ERROR);
 
 }
 my $logger = Log::Log4perl->get_logger('taifex');
