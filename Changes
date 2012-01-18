@@ -1,10 +1,12 @@
 Revision history for Perl extension Finance::TW::TAIFEX
 
+0.36 Wed Jan 18 19:02:51 CST 2012
+        - helper scripts for eod data maintenance.
+
 0.35 Tue Dec 27 18:20:00 CST 2011
         - calendar for 2012.
         - tx helper scripts.
         - make next/previous trading day api work across years.
-
 
 0.34 Sun May  1 17:33:59 CST 2011
         - correct 2011 calendar.
