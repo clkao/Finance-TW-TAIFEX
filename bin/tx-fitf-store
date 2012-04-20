@@ -97,7 +97,7 @@ my $contract_map = {
 while (<$rpt_fh>) {
     s/\s//g;
     my ($date, $c, $m,$time, $price, $vol, $derive_price) = split(',');
-    next unless $c eq $contract;
+    next unless $c && $c eq $contract;
     $time = substr($time, 0, 6) if length $time == 8 && substr($time, 6, 2) eq '00';
     if ($contract eq 'TX' && $time >= 134500) {
         $time = 134459; # workaround for bizzare last entry in rpt
