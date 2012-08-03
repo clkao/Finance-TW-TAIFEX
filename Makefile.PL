@@ -16,7 +16,7 @@ requires 'HTTP::Request::Common';
 requires 'LWP::Simple';
 
 eval 'require Moose; 1';
-if ($@ || -d 'inc/.author') {
+if (($@ || -d 'inc/.author') && ($ENV{ANY_MOOSE} || '') ne 'Moose') {
     requires 'MouseX::NativeTraits'; # XXX: there's nativetraits are builtin for moose
 
     requires_any_moose 'X::Traits';
@@ -24,6 +24,7 @@ if ($@ || -d 'inc/.author') {
 }
 else {
     requires 'Any::Moose';
+    requires 'Moose';
     requires 'MooseX::Traits';
     requires 'MooseX::Types::DateTime';
 }
@@ -31,7 +32,6 @@ else {
 install_share 'share';
 install_script glob('bin/*');
 
-auto_include_deps;
 author_tests('xt');
 auto_set_repository;
 WriteAll;
