@@ -1,5 +1,8 @@
 Revision history for Perl extension Finance::TW::TAIFEX
 
+0.38 Fri Aug  3 11:53:01 CST 2012
+        - update calender for 2012 typhoon.
+
 0.37 Thu Feb  2 14:51:28 CST 2012
         - fix two missing Saturdays in 2012 calendar.
 
