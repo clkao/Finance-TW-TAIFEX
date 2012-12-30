@@ -45,6 +45,7 @@ share/calendar/2009.txt
 share/calendar/2010.txt
 share/calendar/2011.txt
 share/calendar/2012.txt
+share/calendar/2013.txt
 t/00_compile.t
 t/01-basic.t
 t/02-tx.t
